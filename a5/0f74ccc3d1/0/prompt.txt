@@ -1,7 +1,3 @@
-okay lets commit and push this file
-
----
-
 Build the first real version of handwriter.
 
 Goal:

@@ -15,6 +15,11 @@ export class StrokeCanvas {
     this.currentStroke = null;
     this.pointerId = null;
     this.sessionStart = 0;
+    this.listeners = {
+      input: new Set(),
+      strokeEnd: new Set(),
+      clear: new Set()
+    };
 
     this.resize = this.resize.bind(this);
     this.onPointerDown = this.onPointerDown.bind(this);
@@ -47,6 +52,7 @@ export class StrokeCanvas {
     this.pointerId = null;
     this.sessionStart = 0;
     this.redraw();
+    this.emit("clear");
   }
 
   hasInk() {
@@ -90,11 +96,23 @@ export class StrokeCanvas {
     this.currentStroke.y.push(point.y);
     this.currentStroke.t.push(point.t);
     this.redraw();
+    this.emit("input");
   }
 
   endStroke() {
     this.currentStroke = null;
     this.pointerId = null;
+    this.emit("strokeEnd");
+  }
+
+  on(eventName, listener) {
+    this.listeners[eventName]?.add(listener);
+  }
+
+  emit(eventName) {
+    for (const listener of this.listeners[eventName] ?? []) {
+      listener();
+    }
   }
 
   onPointerDown(event) {

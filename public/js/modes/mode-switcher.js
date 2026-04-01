@@ -11,7 +11,7 @@ export class ModeSwitcher {
       draw: {
         title: "Draw",
         hint: "Draw with a mouse, trackpad, or touch. Recognition runs against Google Input Tools through the local app server.",
-        resultStatus: "Draw something, then click Recognize."
+        resultStatus: "Draw something. Recognition starts after you pause."
       },
       upload: {
         title: "Upload Image",

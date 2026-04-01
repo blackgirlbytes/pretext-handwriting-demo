@@ -1,0 +1,9 @@
+i dont want to have to click recognize. i feel like after i draw it should start trying to recognize it
+
+---
+
+so whats the point of the recognize now button
+
+---
+
+yeah remove it from the draw section. okay where do i store the openapi key

@@ -47,3 +47,31 @@ Its role in this project is to power behavior like:
 - background text reflowing around movable obstacles
 - line-by-line layout that adapts to changing geometry
 - layout behavior that is visibly more expressive than normal DOM flow
+
+---
+
+Now evolve handwriter from a plain OCR app into a scrapbook-style composition playground.
+
+Requirements:
+- Keep all three input modes working.
+- Keep the OCR architecture unchanged:
+  - Draw -> Google Input Tools over HTTP
+  - Upload Image / Camera -> OpenAI Responses API
+- Add a scrapbook surface or view where recognized text can become movable visual artifacts.
+- Support at least 3 scrapbook artifact styles in the first pass:
+  - sticky note
+  - circle
+  - heart
+- Shapes should be draggable.
+- Preserve access to the recognized text alongside the scrapbook composition if that still makes sense.
+
+Important:
+- Do not introduce Pretext yet unless it is absolutely required.
+- First make the scrapbook concept itself work.
+- Commit and push this as its own milestone.
+
+After implementing:
+- summarize the scrapbook architecture
+- tell me what feels rough or incomplete
+- tell me whether Pretext feels necessary yet or not
+- tell me what I should evaluate visually in the browser

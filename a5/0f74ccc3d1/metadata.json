@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "a50f74ccc3d1",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 0,
+  "files_touched": [
+    ".gitignore",
+    "README.md",
+    "package.json",
+    "public/index.html",
+    "public/js/app.js",
+    "public/js/lib/stroke-canvas.js",
+    "public/js/modes/draw-mode.js",
+    "public/js/services/recognition-api.js",
+    "public/styles.css",
+    "server/google-input-tools.js",
+    "server/index.js"
+  ],
+  "sessions": [
+    {
+      "metadata": "/a5/0f74ccc3d1/0/metadata.json",
+      "transcript": "/a5/0f74ccc3d1/0/full.jsonl",
+      "content_hash": "/a5/0f74ccc3d1/0/content_hash.txt",
+      "prompt": "/a5/0f74ccc3d1/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 649586,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 623744,
+    "output_tokens": 14645,
+    "api_call_count": 21
+  }
+}

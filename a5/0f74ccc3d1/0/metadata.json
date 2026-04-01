@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "a50f74ccc3d1",
+  "session_id": "019d473b-fa3b-7480-9725-723b0aae707f",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-01T04:17:21.067614Z",
+  "branch": "main",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "package.json",
+    "server/google-input-tools.js",
+    "server/index.js",
+    "public/index.html",
+    "public/styles.css",
+    "public/js/services/recognition-api.js",
+    "public/js/lib/stroke-canvas.js",
+    "public/js/modes/draw-mode.js",
+    "public/js/app.js",
+    "README.md",
+    ".gitignore"
+  ],
+  "agent": "Codex",
+  "model": "gpt-5.4",
+  "turn_id": "e8689f370a7d",
+  "checkpoint_transcript_start": 65,
+  "transcript_lines_at_start": 65,
+  "token_usage": {
+    "input_tokens": 649586,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 623744,
+    "output_tokens": 14645,
+    "api_call_count": 21
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-01T04:17:21.009689Z",
+    "agent_lines": 601,
+    "human_added": 827,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 1428,
+    "agent_percentage": 42.08683473389356
+  }
+}

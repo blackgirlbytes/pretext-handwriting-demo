@@ -1,0 +1,30 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "f1d44d7642e5",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "public/index.html",
+    "public/js/app.js",
+    "public/js/lib/pretext-scrapbook-layout.js",
+    "public/js/lib/scrapbook-board.js",
+    "public/styles.css",
+    "server/index.js"
+  ],
+  "sessions": [
+    {
+      "metadata": "/f1/d44d7642e5/0/metadata.json",
+      "transcript": "/f1/d44d7642e5/0/full.jsonl",
+      "content_hash": "/f1/d44d7642e5/0/content_hash.txt",
+      "prompt": "/f1/d44d7642e5/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 2597016,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 2406656,
+    "output_tokens": 15714,
+    "api_call_count": 25
+  }
+}

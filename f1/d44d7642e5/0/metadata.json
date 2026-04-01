@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "f1d44d7642e5",
+  "session_id": "019d473b-fa3b-7480-9725-723b0aae707f",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-01T07:04:39.182425Z",
+  "branch": "main",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "public/js/lib/pretext-scrapbook-layout.js",
+    "public/js/lib/scrapbook-board.js",
+    "public/index.html",
+    "public/js/app.js",
+    "public/styles.css",
+    "server/index.js"
+  ],
+  "agent": "Codex",
+  "model": "gpt-5.4",
+  "turn_id": "0893e1bd4bad",
+  "checkpoint_transcript_start": 852,
+  "transcript_lines_at_start": 852,
+  "token_usage": {
+    "input_tokens": 2597016,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 2406656,
+    "output_tokens": 15714,
+    "api_call_count": 25
+  },
+  "session_metrics": {
+    "turn_count": 14
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-04-01T07:04:38.982901Z",
+    "agent_lines": 297,
+    "human_added": 8,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 305,
+    "agent_percentage": 97.37704918032787
+  }
+}

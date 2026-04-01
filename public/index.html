@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Handwriter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main class="app-shell">
-      <section class="panel panel-left">
+      <section class="panel panel-left workspace-panel input-workspace">
+        <div class="panel-kicker">Handwriter scrapbook lab</div>
+        <p class="subtitle">
+          Capture handwriting from drawing, uploaded images, or camera, then turn the recognized text into movable scrapbook pieces.
+        </p>
         <div class="mode-tabs" role="tablist" aria-label="Recognition modes">
           <button id="mode-draw-button" class="mode-tab" type="button" data-active="true">Draw</button>
           <button id="mode-upload-button" class="mode-tab button-secondary" type="button" data-active="false">Upload Image</button>
@@ -73,8 +83,16 @@
         </p>
       </section>
 
-      <section class="panel panel-right">
-        <div class="result-card">
+      <section class="panel panel-right workspace-panel output-workspace">
+        <div class="output-topline">
+          <div>
+            <h2>Scrapbook Output</h2>
+            <p>Keep the transcript readable while building a composition from the same recognized text.</p>
+          </div>
+          <div id="status" class="status">Draw something. Recognition starts after you pause.</div>
+        </div>
+
+        <div class="result-card transcript-card">
           <p class="eyebrow">Recognized Text</p>
           <div id="result-text" class="result-text">Nothing recognized yet.</div>
           <div class="scrapbook-controls">
@@ -90,7 +108,7 @@
           </div>
         </div>
 
-        <div id="alternatives-card" class="result-card">
+        <div id="alternatives-card" class="result-card transcript-card">
           <p class="eyebrow">Alternatives</p>
           <ul id="candidate-list" class="candidate-list">
             <li>No alternatives yet.</li>
@@ -98,23 +116,27 @@
         </div>
 
         <div class="result-card scrapbook-card">
-          <div class="scrapbook-header">
+          <div class="scrapbook-toolbar">
             <div>
               <p class="eyebrow">Scrapbook Surface</p>
               <h2>Composition Playground</h2>
             </div>
             <p class="scrapbook-subtle">Drag artifacts and watch the background text reroute.</p>
           </div>
-          <div id="scrapbook-surface" class="scrapbook-surface">
-            <div id="scrapbook-background-layer" class="scrapbook-background-layer"></div>
-            <div id="scrapbook-artifacts-layer" class="scrapbook-artifacts-layer"></div>
-            <p id="scrapbook-empty-state" class="scrapbook-empty-state">
-              Add recognized text to start building a scrapbook composition.
-            </p>
+          <div class="scrapbook-stage">
+            <div class="scrapbook-meta">
+              <span class="scrapbook-badge">Composition page</span>
+              <span class="scrapbook-date">Move shapes to compose</span>
+            </div>
+            <div id="scrapbook-surface" class="scrapbook-surface">
+              <div id="scrapbook-background-layer" class="scrapbook-background-layer"></div>
+              <div id="scrapbook-artifacts-layer" class="scrapbook-artifacts-layer"></div>
+              <p id="scrapbook-empty-state" class="scrapbook-empty-state">
+                Add recognized text to start building a scrapbook composition.
+              </p>
+            </div>
           </div>
         </div>
-
-        <div id="status" class="status">Draw something. Recognition starts after you pause.</div>
       </section>
     </main>
 

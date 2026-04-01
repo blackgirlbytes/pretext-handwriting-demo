@@ -1,8 +1,16 @@
 :root {
-  font-family: Arial, sans-serif;
-  color: #111827;
-  background: #f3f4f6;
-  line-height: 1.4;
+  --bg-ink: #13262f;
+  --bg-olive: #233d4d;
+  --paper: #f5ecd9;
+  --paper-deep: #e8d8b5;
+  --accent-coral: #da6a53;
+  --accent-gold: #e0b35a;
+  --accent-leaf: #6f8f72;
+  --panel: rgba(19, 38, 47, 0.78);
+  --panel-edge: rgba(255, 244, 224, 0.16);
+  --text: #f7f2e8;
+  --muted: rgba(247, 242, 232, 0.72);
+  --shadow: 0 24px 80px rgba(9, 20, 26, 0.32);
 }
 
 * {
@@ -11,6 +19,14 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  padding: 2rem 1.25rem 2.5rem;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(224, 179, 90, 0.12), transparent 30%),
+    radial-gradient(circle at top right, rgba(218, 106, 83, 0.14), transparent 28%),
+    linear-gradient(160deg, #102129 0%, #1a3340 50%, #14292f 100%);
 }
 
 button,
@@ -20,71 +36,178 @@ input {
 }
 
 .app-shell {
-  min-height: 100vh;
+  width: min(1260px, 100%);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-  gap: 16px;
-  padding: 16px;
+  grid-template-columns: minmax(320px, 460px) minmax(360px, 1fr);
+  gap: 1.5rem;
+  align-items: start;
 }
 
 .panel {
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 28px;
 }
 
-.panel-header,
-.actions {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 12px;
+.workspace-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.input-workspace,
+.output-workspace {
+  padding: 1.5rem;
+}
+
+.panel-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(224, 179, 90, 0.14);
+  color: #ffe5a5;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 44ch;
 }
 
 .mode-tabs {
   display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
 }
 
 .mode-tab[data-active="true"] {
-  background: #111827;
-  color: #ffffff;
+  background: var(--accent-coral);
+  border-color: var(--accent-coral);
+  color: #fff8ef;
 }
 
 .mode-tab[data-active="false"] {
-  background: #e5e7eb;
-  color: #111827;
+  background: rgba(13, 24, 31, 0.44);
+  border-color: rgba(255, 244, 224, 0.14);
+  color: var(--text);
+}
+
+.panel-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow,
+.field span {
+  margin: 0;
+  color: rgba(247, 242, 232, 0.58);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+.output-topline h2,
+.scrapbook-toolbar h2 {
+  margin: 0.35rem 0 0;
+  font-family: "Special Elite", serif;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
 }
 
 .field {
   display: grid;
-  gap: 6px;
-  min-width: 140px;
+  gap: 0.4rem;
 }
 
-.field span,
-.eyebrow {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6b7280;
-  margin: 0;
+input[type="file"],
+select {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 244, 224, 0.14);
+  background: rgba(8, 16, 21, 0.35);
+  color: var(--text);
 }
 
-h1 {
-  margin: 4px 0 0;
-  font-size: 1.8rem;
+button {
+  padding: 0.7rem 1.15rem;
+  border: 1px solid rgba(255, 244, 224, 0.14);
+  border-radius: 999px;
+  background: rgba(13, 24, 31, 0.44);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: rgba(255, 244, 224, 0.12);
+  border-color: rgba(255, 244, 224, 0.3);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-secondary {
+  background: rgba(255, 244, 224, 0.08);
+  color: var(--text);
+}
+
+#add-to-scrapbook-button,
+#camera-capture-button {
+  background: var(--accent-coral);
+  border-color: var(--accent-coral);
+  color: #fff8ef;
+}
+
+#add-to-scrapbook-button:hover,
+#camera-capture-button:hover {
+  background: #cb5a46;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.hint {
+  margin: 1rem 0 0;
+  color: rgba(247, 242, 232, 0.48);
+  font-size: 0.82rem;
 }
 
 .canvas-wrap {
-  margin: 16px 0;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
+  position: relative;
+  margin: 1rem 0 0;
+  background:
+    linear-gradient(to bottom, rgba(58, 84, 116, 0.08) 0, rgba(58, 84, 116, 0.08) 1px, transparent 1px, transparent 34px),
+    linear-gradient(to right, transparent 0, transparent 34px, rgba(220, 85, 84, 0.25) 34px, rgba(220, 85, 84, 0.25) 35px, transparent 35px),
+    #fffdf7;
+  background-size: 100% 35px, 100% 100%;
+  border-radius: 24px;
   overflow: hidden;
-  background: #fffef8;
+  border: 1px solid rgba(255, 250, 240, 0.08);
 }
 
 #draw-canvas {
@@ -95,121 +218,206 @@ h1 {
   cursor: crosshair;
 }
 
-button {
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 16px;
-  background: #111827;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.button-secondary {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-input[type="file"],
-select {
-  width: 100%;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  padding: 10px 12px;
-  background: #ffffff;
-}
-
-.hint,
-.status {
-  color: #4b5563;
-}
-
 .file-name {
-  margin: 12px 0;
-  color: #374151;
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+}
+
+.upload-preview-wrap,
+.camera-stage {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  margin-top: 1rem;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(8, 16, 21, 0.34);
+  border: 1px dashed rgba(255, 244, 224, 0.18);
 }
 
 #upload-preview-image,
 #camera-preview-image,
 #camera-video {
   display: block;
-  max-width: 100%;
-  max-height: 420px;
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  background: rgba(8, 16, 21, 0.35);
 }
 
 #camera-video,
 #camera-preview-image {
-  width: 100%;
-  background: #111827;
-  aspect-ratio: 4 / 3;
   object-fit: cover;
+  aspect-ratio: 4 / 3;
+  background: rgba(8, 16, 21, 0.55);
 }
 
 .panel-right {
+  min-height: 100%;
   display: grid;
-  align-content: start;
-  gap: 16px;
+  gap: 1rem;
+}
+
+.output-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.output-topline p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 34ch;
+}
+
+.status {
+  min-height: 1.4rem;
+  color: rgba(247, 242, 232, 0.72);
+  font-size: 0.9rem;
+  max-width: 24ch;
 }
 
 .result-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px;
-  background: #fafafa;
+  border: 1px solid rgba(255, 244, 224, 0.1);
+  border-radius: 24px;
+  padding: 1.2rem;
+  background: rgba(8, 16, 21, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .result-text {
-  min-height: 120px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  font-size: 1.5rem;
+  min-height: 220px;
+  padding: 1.1rem;
+  border-radius: 24px;
+  background: rgba(8, 16, 21, 0.35);
+  border: 1px solid rgba(255, 244, 224, 0.12);
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.6;
   white-space: pre-wrap;
 }
 
+.candidate-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
 .scrapbook-controls {
-  margin-top: 16px;
   display: grid;
-  gap: 12px;
+  gap: 0.85rem;
+  margin-top: 1rem;
 }
 
 .scrapbook-card {
-  gap: 16px;
+  padding: 1.2rem;
+  background:
+    linear-gradient(135deg, rgba(247, 242, 232, 0.08), rgba(247, 242, 232, 0.02)),
+    linear-gradient(180deg, rgba(5, 12, 15, 0.2), rgba(5, 12, 15, 0.5));
 }
 
-.scrapbook-header {
+.scrapbook-toolbar {
   display: flex;
-  align-items: end;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.scrapbook-header h2 {
-  margin: 4px 0 0;
-  font-size: 1.2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .scrapbook-subtle {
   margin: 0;
-  color: #6b7280;
+  color: var(--muted);
+}
+
+.scrapbook-stage {
+  position: relative;
+  min-height: 780px;
+  border-radius: 28px;
+  padding: 1.25rem;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(247, 242, 232, 0.08), rgba(247, 242, 232, 0.02)),
+    linear-gradient(180deg, rgba(5, 12, 15, 0.2), rgba(5, 12, 15, 0.5));
+  border: 1px solid rgba(255, 244, 224, 0.1);
+}
+
+.scrapbook-stage::before,
+.scrapbook-stage::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  filter: blur(10px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.scrapbook-stage::before {
+  top: -40px;
+  right: -30px;
+  background: rgba(224, 179, 90, 0.12);
+}
+
+.scrapbook-stage::after {
+  bottom: -55px;
+  left: -45px;
+  background: rgba(111, 143, 114, 0.12);
+}
+
+.scrapbook-meta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.scrapbook-badge,
+.scrapbook-date {
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 248, 239, 0.15);
+  border: 1px solid rgba(255, 248, 239, 0.18);
+  color: #fff5de;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .scrapbook-surface {
   position: relative;
-  min-height: 520px;
-  overflow: hidden;
-  border: 1px dashed #d1d5db;
-  border-radius: 18px;
+  width: min(100%, 680px);
+  min-height: 680px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 30px;
   background:
-    radial-gradient(circle at top left, rgba(255, 244, 200, 0.7), transparent 34%),
-    radial-gradient(circle at bottom right, rgba(215, 235, 255, 0.8), transparent 30%),
-    linear-gradient(180deg, #fffef8 0%, #f9f6ed 100%);
+    linear-gradient(to bottom, rgba(58, 84, 116, 0.06) 0, rgba(58, 84, 116, 0.06) 1px, transparent 1px, transparent 35px),
+    linear-gradient(to right, transparent 0, transparent 42px, rgba(220, 85, 84, 0.16) 42px, rgba(220, 85, 84, 0.16) 43px, transparent 43px),
+    #f6eddb;
+  background-size: 100% 35px, 100% 100%;
+  box-shadow:
+    0 24px 60px rgba(5, 12, 15, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  overflow: hidden;
+}
+
+.scrapbook-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.35), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(203, 180, 134, 0.18), transparent 24%);
+  pointer-events: none;
 }
 
 .scrapbook-background-layer,
@@ -219,11 +427,12 @@ select {
 }
 
 .scrapbook-background-layer {
+  z-index: 1;
   pointer-events: none;
 }
 
 .scrapbook-artifacts-layer {
-  z-index: 2;
+  z-index: 3;
 }
 
 .scrapbook-background-line {
@@ -237,25 +446,35 @@ select {
 .scrapbook-empty-state {
   position: absolute;
   inset: 24px;
+  z-index: 4;
   margin: 0;
   display: grid;
   place-items: center;
   text-align: center;
-  color: #6b7280;
-  border: 1px dashed #d1d5db;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.65);
-  z-index: 3;
+  color: rgba(64, 55, 41, 0.6);
+  font-size: 0.95rem;
 }
 
 .scrapbook-artifact {
   position: absolute;
-  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.9rem 1rem;
+  color: #2b2b25;
+  cursor: grab;
   user-select: none;
   touch-action: none;
-  cursor: grab;
-  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.14);
+  box-shadow: 0 16px 28px rgba(24, 20, 12, 0.18);
   overflow: hidden;
+}
+
+.scrapbook-artifact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 28%);
+  pointer-events: none;
 }
 
 .scrapbook-artifact:active {
@@ -263,75 +482,81 @@ select {
 }
 
 .scrapbook-artifact-label {
-  margin: 0 0 10px;
-  font-size: 0.72rem;
-  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.5rem;
+  font-family: "Special Elite", serif;
+  font-size: 0.74rem;
   letter-spacing: 0.08em;
-  color: rgba(17, 24, 39, 0.65);
+  text-transform: uppercase;
+  color: rgba(64, 55, 41, 0.72);
 }
 
 .scrapbook-artifact-text {
+  position: relative;
+  z-index: 1;
   margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
   white-space: pre-wrap;
   word-break: break-word;
-  font-size: 1rem;
 }
 
 .artifact-sticky {
-  background: #fff0a8;
-  border: 1px solid #e1cb61;
-  border-radius: 6px;
-  transform: rotate(-2deg);
+  background: #f2d89f;
+  border: 1px solid rgba(115, 84, 44, 0.12);
+  border-radius: 18px 24px 18px 20px;
+  transform: rotate(-3deg);
 }
 
 .artifact-circle {
+  background: #d8e2d0;
+  border: 1px solid rgba(115, 84, 44, 0.12);
   border-radius: 999px;
-  background: #dceeff;
-  border: 1px solid #8eb7d8;
-  display: grid;
-  align-content: center;
+  transform: rotate(6deg);
   text-align: center;
-  padding: 24px;
 }
 
 .artifact-heart {
-  background: #ffd9e0;
-  border: 1px solid #e0a0af;
-  clip-path: path("M 90 165 C 35 130 0 95 0 50 C 0 18 24 0 50 0 C 70 0 84 12 90 24 C 96 12 110 0 130 0 C 156 0 180 18 180 50 C 180 95 145 130 90 165 Z");
-  padding: 40px 28px 26px;
+  background: #edc6bf;
+  border: 1px solid rgba(115, 84, 44, 0.12);
+  clip-path: polygon(
+    50% 100%,
+    18% 72%,
+    7% 52%,
+    9% 28%,
+    23% 12%,
+    36% 12%,
+    50% 24%,
+    64% 12%,
+    77% 12%,
+    91% 28%,
+    93% 52%,
+    82% 72%
+  );
+  transform: rotate(-5deg);
   text-align: center;
 }
 
-.candidate-list {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.upload-preview-wrap,
-.camera-stage {
-  margin: 16px 0;
-  min-height: 220px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  background: #fffef8;
-  overflow: hidden;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .app-shell {
     grid-template-columns: 1fr;
   }
 
+  .output-topline,
   .panel-header,
+  .scrapbook-toolbar,
+  .scrapbook-meta,
   .actions {
     align-items: start;
     flex-direction: column;
   }
 
-  .scrapbook-header {
-    align-items: start;
-    flex-direction: column;
+  .status {
+    max-width: none;
+  }
+
+  .scrapbook-surface {
+    width: 100%;
   }
 }

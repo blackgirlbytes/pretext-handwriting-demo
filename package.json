@@ -8,6 +8,7 @@
     "start": "node server/index.js"
   },
   "dependencies": {
+    "@chenglou/pretext": "^0.0.3",
     "dotenv": "^16.6.1",
     "express": "^4.21.2"
   }

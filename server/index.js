@@ -10,11 +10,13 @@ import { recognizeHandwritingFromImage } from "./openai-image-ocr.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const publicDir = path.join(__dirname, "..", "public");
+const pretextDir = path.join(__dirname, "..", "node_modules", "@chenglou", "pretext");
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
 
 app.use(express.json({ limit: "15mb" }));
+app.use("/vendor/pretext", express.static(pretextDir));
 app.use(express.static(publicDir));
 
 app.post("/api/recognize/draw", async (req, res) => {

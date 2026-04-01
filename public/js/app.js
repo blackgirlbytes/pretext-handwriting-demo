@@ -33,7 +33,9 @@ const resultView = new ResultView({
 const scrapbookBoard = new ScrapbookBoard({
   surface: document.querySelector("#scrapbook-surface"),
   emptyState: document.querySelector("#scrapbook-empty-state"),
-  styleSelect: document.querySelector("#artifact-style-select")
+  styleSelect: document.querySelector("#artifact-style-select"),
+  backgroundLayer: document.querySelector("#scrapbook-background-layer"),
+  artifactsLayer: document.querySelector("#scrapbook-artifacts-layer")
 });
 
 const drawMode = new DrawMode({

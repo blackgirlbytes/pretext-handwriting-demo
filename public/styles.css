@@ -202,7 +202,7 @@ select {
 
 .scrapbook-surface {
   position: relative;
-  min-height: 420px;
+  min-height: 520px;
   overflow: hidden;
   border: 1px dashed #d1d5db;
   border-radius: 18px;
@@ -210,6 +210,28 @@ select {
     radial-gradient(circle at top left, rgba(255, 244, 200, 0.7), transparent 34%),
     radial-gradient(circle at bottom right, rgba(215, 235, 255, 0.8), transparent 30%),
     linear-gradient(180deg, #fffef8 0%, #f9f6ed 100%);
+}
+
+.scrapbook-background-layer,
+.scrapbook-artifacts-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.scrapbook-background-layer {
+  pointer-events: none;
+}
+
+.scrapbook-artifacts-layer {
+  z-index: 2;
+}
+
+.scrapbook-background-line {
+  position: absolute;
+  margin: 0;
+  color: #374151;
+  font: 16px/24px Arial, sans-serif;
+  white-space: pre-wrap;
 }
 
 .scrapbook-empty-state {
@@ -223,17 +245,17 @@ select {
   border: 1px dashed #d1d5db;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.65);
+  z-index: 3;
 }
 
 .scrapbook-artifact {
   position: absolute;
-  max-width: 220px;
-  min-width: 140px;
   padding: 18px 16px;
   user-select: none;
   touch-action: none;
   cursor: grab;
   box-shadow: 0 10px 24px rgba(17, 24, 39, 0.14);
+  overflow: hidden;
 }
 
 .scrapbook-artifact:active {
@@ -263,8 +285,6 @@ select {
 }
 
 .artifact-circle {
-  min-height: 170px;
-  min-width: 170px;
   border-radius: 999px;
   background: #dceeff;
   border: 1px solid #8eb7d8;
@@ -275,8 +295,6 @@ select {
 }
 
 .artifact-heart {
-  min-height: 170px;
-  min-width: 180px;
   background: #ffd9e0;
   border: 1px solid #e0a0af;
   clip-path: path("M 90 165 C 35 130 0 95 0 50 C 0 18 24 0 50 0 C 70 0 84 12 90 24 C 96 12 110 0 130 0 C 156 0 180 18 180 50 C 180 95 145 130 90 165 Z");

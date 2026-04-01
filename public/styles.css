@@ -256,7 +256,7 @@ button:disabled {
 .panel-right {
   min-height: 100%;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.2rem;
 }
 
 .output-topline {
@@ -275,9 +275,10 @@ button:disabled {
 }
 
 .status {
-  min-height: 1.4rem;
+  min-height: 0;
   color: rgba(247, 242, 232, 0.72);
   font-size: 0.88rem;
+  line-height: 1.2;
   max-width: 32ch;
   margin-bottom: 0;
 }
@@ -335,7 +336,7 @@ button:disabled {
 
 .output-panel {
   display: none;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .output-panel.is-active {

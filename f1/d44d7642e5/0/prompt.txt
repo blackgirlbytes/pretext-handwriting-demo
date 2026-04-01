@@ -1,7 +1,3 @@
-push and commit the AGENTS.md changes as well
-
----
-
 Now make Pretext genuinely necessary in handwriter.
 
 Current goal:

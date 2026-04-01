@@ -89,51 +89,62 @@
             <h2>Scrapbook Output</h2>
             <p>Keep the transcript readable while building a composition from the same recognized text.</p>
           </div>
-          <div id="status" class="status">Draw something. Recognition starts after you pause.</div>
-        </div>
-
-        <div class="result-card transcript-card">
-          <p class="eyebrow">Recognized Text</p>
-          <div id="result-text" class="result-text">Nothing recognized yet.</div>
-          <div class="scrapbook-controls">
-            <label class="field">
-              <span>Artifact Style</span>
-              <select id="artifact-style-select">
-                <option value="sticky" selected>Sticky Note</option>
-                <option value="circle">Circle</option>
-                <option value="heart">Heart</option>
-              </select>
-            </label>
-            <button id="add-to-scrapbook-button" type="button">Add To Scrapbook</button>
+          <div class="output-tabs" role="tablist" aria-label="Output views">
+            <button id="output-transcript-tab" class="output-tab" type="button" data-active="true">Transcript</button>
+            <button id="output-scrapbook-tab" class="output-tab" type="button" data-active="false">Scrapbook</button>
           </div>
         </div>
 
-        <div id="alternatives-card" class="result-card transcript-card">
-          <p class="eyebrow">Alternatives</p>
-          <ul id="candidate-list" class="candidate-list">
-            <li>No alternatives yet.</li>
-          </ul>
+        <div id="status" class="status">Draw something. Recognition starts after you pause.</div>
+
+        <div id="transcript-panel" class="output-panel is-active">
+          <div class="result-card transcript-card">
+            <p class="eyebrow">Recognized Text</p>
+            <div id="result-text" class="result-text">Nothing recognized yet.</div>
+          </div>
+
+          <div id="alternatives-card" class="result-card transcript-card">
+            <p class="eyebrow">Alternatives</p>
+            <ul id="candidate-list" class="candidate-list">
+              <li>No alternatives yet.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="result-card scrapbook-card">
-          <div class="scrapbook-toolbar">
-            <div>
-              <p class="eyebrow">Scrapbook Surface</p>
-              <h2>Composition Playground</h2>
+        <div id="scrapbook-panel" class="output-panel">
+          <div class="result-card scrapbook-source-card">
+            <p class="eyebrow">Latest Recognized Text</p>
+            <div id="scrapbook-source-text" class="scrapbook-source-text">Nothing recognized yet.</div>
+            <div class="scrapbook-controls">
+              <label class="field">
+                <span>Artifact Style</span>
+                <select id="artifact-style-select">
+                  <option value="sticky" selected>Sticky Note</option>
+                  <option value="circle">Circle</option>
+                  <option value="heart">Heart</option>
+                </select>
+              </label>
+              <button id="add-to-scrapbook-button" type="button">Add To Scrapbook</button>
             </div>
-            <p class="scrapbook-subtle">Drag artifacts and watch the background text reroute.</p>
           </div>
-          <div class="scrapbook-stage">
-            <div class="scrapbook-meta">
-              <span class="scrapbook-badge">Composition page</span>
-              <span class="scrapbook-date">Move shapes to compose</span>
+
+          <div class="result-card scrapbook-card">
+            <div class="scrapbook-toolbar">
+              <div>
+                <p class="eyebrow">Scrapbook Surface</p>
+                <h2>Composition Playground</h2>
+              </div>
+              <p class="scrapbook-subtle">Drag artifacts and watch the background text reroute.</p>
             </div>
-            <div id="scrapbook-surface" class="scrapbook-surface">
-              <div id="scrapbook-background-layer" class="scrapbook-background-layer"></div>
-              <div id="scrapbook-artifacts-layer" class="scrapbook-artifacts-layer"></div>
-              <p id="scrapbook-empty-state" class="scrapbook-empty-state">
-                Add recognized text to start building a scrapbook composition.
-              </p>
+            <div class="scrapbook-stage">
+              <div class="scrapbook-meta">
+                <span class="scrapbook-badge">Composition page</span>
+                <span class="scrapbook-date">Move shapes to compose</span>
+              </div>
+              <div id="scrapbook-surface" class="scrapbook-surface">
+                <div id="scrapbook-background-layer" class="scrapbook-background-layer"></div>
+                <div id="scrapbook-artifacts-layer" class="scrapbook-artifacts-layer"></div>
+              </div>
             </div>
           </div>
         </div>

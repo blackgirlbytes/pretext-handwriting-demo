@@ -10,6 +10,7 @@ import { RecognitionApi } from "./services/recognition-api.js";
 const strokeCanvas = new StrokeCanvas(document.querySelector("#draw-canvas"));
 const recognitionApi = new RecognitionApi();
 const addToScrapbookButton = document.querySelector("#add-to-scrapbook-button");
+const scrapbookSourceText = document.querySelector("#scrapbook-source-text");
 const invalidScrapbookTexts = new Set([
   "Nothing recognized yet.",
   "Recognition failed.",
@@ -27,12 +28,12 @@ const resultView = new ResultView({
   status: document.querySelector("#status"),
   onResultTextChange: (text) => {
     latestRecognizedText = text;
+    scrapbookSourceText.textContent = text;
     addToScrapbookButton.disabled = !hasScrapbookReadyText(text);
   }
 });
 const scrapbookBoard = new ScrapbookBoard({
   surface: document.querySelector("#scrapbook-surface"),
-  emptyState: document.querySelector("#scrapbook-empty-state"),
   styleSelect: document.querySelector("#artifact-style-select"),
   backgroundLayer: document.querySelector("#scrapbook-background-layer"),
   artifactsLayer: document.querySelector("#scrapbook-artifacts-layer")
@@ -100,6 +101,29 @@ scrapbookBoard.mount();
 
 addToScrapbookButton.disabled = true;
 
+const outputTabs = {
+  transcript: document.querySelector("#output-transcript-tab"),
+  scrapbook: document.querySelector("#output-scrapbook-tab")
+};
+
+const outputPanels = {
+  transcript: document.querySelector("#transcript-panel"),
+  scrapbook: document.querySelector("#scrapbook-panel")
+};
+
+function setOutputTab(activeTab) {
+  for (const [name, button] of Object.entries(outputTabs)) {
+    button.dataset.active = String(name === activeTab);
+  }
+
+  for (const [name, panel] of Object.entries(outputPanels)) {
+    panel.classList.toggle("is-active", name === activeTab);
+  }
+}
+
+outputTabs.transcript.addEventListener("click", () => setOutputTab("transcript"));
+outputTabs.scrapbook.addEventListener("click", () => setOutputTab("scrapbook"));
+
 addToScrapbookButton.addEventListener("click", () => {
   if (!hasScrapbookReadyText(latestRecognizedText)) {
     resultView.setStatus("Recognize some handwriting before adding it to the scrapbook.");
@@ -114,4 +138,5 @@ addToScrapbookButton.addEventListener("click", () => {
   }
 
   resultView.setStatus("Added recognized text to the scrapbook.");
+  setOutputTab("scrapbook");
 });

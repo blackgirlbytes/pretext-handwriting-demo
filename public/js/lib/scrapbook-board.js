@@ -22,9 +22,8 @@ const STYLE_PRESETS = {
 };
 
 export class ScrapbookBoard {
-  constructor({ surface, emptyState, styleSelect, backgroundLayer, artifactsLayer }) {
+  constructor({ surface, styleSelect, backgroundLayer, artifactsLayer }) {
     this.surface = surface;
-    this.emptyState = emptyState;
     this.styleSelect = styleSelect;
     this.backgroundLayer = backgroundLayer;
     this.artifactsLayer = artifactsLayer;
@@ -168,7 +167,6 @@ export class ScrapbookBoard {
   }
 
   render() {
-    this.emptyState.hidden = this.artifacts.length > 0;
     this.backgroundLayout.render({
       width: this.surface.clientWidth,
       height: this.surface.clientHeight,

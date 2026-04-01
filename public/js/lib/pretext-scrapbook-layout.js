@@ -8,8 +8,8 @@ const BACKGROUND_TEXT = [
   "As you move each artifact, the page should feel more like a living collage than a static OCR result, with the background body visibly rerouting itself around the obstacles."
 ].join(" ");
 
-const FONT = "16px Arial";
-const LINE_HEIGHT = 24;
+const FONT = '26px Caveat';
+const LINE_HEIGHT = 33;
 const PADDING = 28;
 const MIN_SEGMENT_WIDTH = 36;
 
@@ -152,10 +152,22 @@ function createLineElement(lineText, x, y, width) {
 export class PretextScrapbookLayout {
   constructor({ layer }) {
     this.layer = layer;
+    this.lastRenderArgs = null;
     this.prepared = prepareWithSegments(BACKGROUND_TEXT, FONT);
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        this.prepared = prepareWithSegments(BACKGROUND_TEXT, FONT);
+
+        if (this.lastRenderArgs) {
+          this.render(this.lastRenderArgs);
+        }
+      });
+    }
   }
 
   render({ width, height, obstacles }) {
+    this.lastRenderArgs = { width, height, obstacles };
     this.layer.innerHTML = "";
 
     if (width <= PADDING * 2 || height <= PADDING * 2) {

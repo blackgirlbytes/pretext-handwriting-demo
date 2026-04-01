@@ -1,0 +1,27 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "e56636b7c4d4",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "public/js/services/recognition-api.js",
+    "server/index.js",
+    "server/openai-image-ocr.js"
+  ],
+  "sessions": [
+    {
+      "metadata": "/e5/6636b7c4d4/0/metadata.json",
+      "transcript": "/e5/6636b7c4d4/0/full.jsonl",
+      "content_hash": "/e5/6636b7c4d4/0/content_hash.txt",
+      "prompt": "/e5/6636b7c4d4/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 21136657,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 19765760,
+    "output_tokens": 141232,
+    "api_call_count": 296
+  }
+}

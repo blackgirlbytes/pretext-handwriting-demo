@@ -3,7 +3,7 @@ export class RecognitionApi {
     return this.post("/api/recognize/draw", payload);
   }
 
-  async recognizeUploadedImage(payload) {
+  async recognizeImageInput(payload) {
     return this.post("/api/recognize/image", payload);
   }
 

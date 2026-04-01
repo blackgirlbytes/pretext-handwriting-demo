@@ -12,6 +12,7 @@
         <div class="mode-tabs" role="tablist" aria-label="Recognition modes">
           <button id="mode-draw-button" class="mode-tab" type="button" data-active="true">Draw</button>
           <button id="mode-upload-button" class="mode-tab button-secondary" type="button" data-active="false">Upload Image</button>
+          <button id="mode-camera-button" class="mode-tab button-secondary" type="button" data-active="false">Camera</button>
         </div>
 
         <div class="panel-header">
@@ -55,6 +56,18 @@
           </div>
         </div>
 
+        <div id="camera-panel" hidden>
+          <div class="camera-stage">
+            <video id="camera-video" autoplay playsinline muted></video>
+            <img id="camera-preview-image" alt="Captured handwriting frame" hidden />
+          </div>
+
+          <div class="actions">
+            <button id="camera-capture-button" type="button">Capture Frame</button>
+            <button id="camera-retake-button" type="button" class="button-secondary">Retake</button>
+          </div>
+        </div>
+
         <p id="mode-hint" class="hint">
           Draw with a mouse, trackpad, or touch. Recognition runs against Google Input Tools through the local app server.
         </p>
@@ -66,7 +79,7 @@
           <div id="result-text" class="result-text">Nothing recognized yet.</div>
         </div>
 
-        <div class="result-card">
+        <div id="alternatives-card" class="result-card">
           <p class="eyebrow">Alternatives</p>
           <ul id="candidate-list" class="candidate-list">
             <li>No alternatives yet.</li>

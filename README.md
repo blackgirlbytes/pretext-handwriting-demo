@@ -17,3 +17,4 @@ Open `http://localhost:3000`.
 
 - `Draw`: captures canvas strokes in the browser and sends them to Google Input Tools through the local server.
 - `Upload Image`: sends an uploaded image to the local server, which calls the OpenAI Responses API for handwriting OCR.
+- `Camera`: captures a camera frame in the browser and sends it through the same local OpenAI image-recognition endpoint used by Upload Image.

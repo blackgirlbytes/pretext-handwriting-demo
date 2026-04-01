@@ -44,6 +44,7 @@ input {
 
 .mode-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
 }
@@ -128,6 +129,7 @@ select {
 }
 
 .upload-preview-wrap {
+.camera-stage {
   margin: 16px 0;
   min-height: 220px;
   display: grid;
@@ -138,10 +140,20 @@ select {
   overflow: hidden;
 }
 
-#upload-preview-image {
+#upload-preview-image,
+#camera-preview-image,
+#camera-video {
   display: block;
   max-width: 100%;
   max-height: 420px;
+}
+
+#camera-video,
+#camera-preview-image {
+  width: 100%;
+  background: #111827;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
 .panel-right {

@@ -1,9 +1,10 @@
 export class ModeSwitcher {
-  constructor({ buttons, panels, title, hint, resultView, onModeChange }) {
+  constructor({ buttons, panels, title, hint, alternativesCard, resultView, onModeChange }) {
     this.buttons = buttons;
     this.panels = panels;
     this.title = title;
     this.hint = hint;
+    this.alternativesCard = alternativesCard;
     this.resultView = resultView;
     this.onModeChange = onModeChange;
 
@@ -11,12 +12,20 @@ export class ModeSwitcher {
       draw: {
         title: "Draw",
         hint: "Draw with a mouse, trackpad, or touch. Recognition runs against Google Input Tools through the local app server.",
-        resultStatus: "Draw something. Recognition starts after you pause."
+        resultStatus: "Draw something. Recognition starts after you pause.",
+        showAlternatives: true
       },
       upload: {
         title: "Upload Image",
         hint: "Upload a handwriting image. Recognition runs through the local server with the OpenAI Responses API.",
-        resultStatus: "Choose an image. Recognition starts immediately."
+        resultStatus: "Choose an image. Recognition starts immediately.",
+        showAlternatives: false
+      },
+      camera: {
+        title: "Camera",
+        hint: "Capture a handwriting frame from the camera. Recognition runs through the same OpenAI image endpoint used by Upload Image.",
+        resultStatus: "Open the camera and capture a frame to recognize handwriting.",
+        showAlternatives: false
       }
     };
   }
@@ -40,9 +49,10 @@ export class ModeSwitcher {
 
     this.title.textContent = this.modeMeta[mode].title;
     this.hint.textContent = this.modeMeta[mode].hint;
+    this.alternativesCard.hidden = !this.modeMeta[mode].showAlternatives;
     this.resultView.setResultText("Nothing recognized yet.");
     this.resultView.setCandidates([]);
     this.resultView.setStatus(this.modeMeta[mode].resultStatus);
-    this.onModeChange?.(mode);
+    return this.onModeChange?.(mode);
   }
 }

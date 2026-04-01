@@ -1,5 +1,6 @@
 import { StrokeCanvas } from "./lib/stroke-canvas.js";
 import { ResultView } from "./lib/result-view.js";
+import { CameraMode } from "./modes/camera-mode.js";
 import { DrawMode } from "./modes/draw-mode.js";
 import { ModeSwitcher } from "./modes/mode-switcher.js";
 import { UploadMode } from "./modes/upload-mode.js";
@@ -30,25 +31,44 @@ const uploadMode = new UploadMode({
   resultView
 });
 
+const cameraMode = new CameraMode({
+  recognitionApi,
+  captureButton: document.querySelector("#camera-capture-button"),
+  retakeButton: document.querySelector("#camera-retake-button"),
+  video: document.querySelector("#camera-video"),
+  previewImage: document.querySelector("#camera-preview-image"),
+  resultView
+});
+
 const modeSwitcher = new ModeSwitcher({
   buttons: {
     draw: document.querySelector("#mode-draw-button"),
-    upload: document.querySelector("#mode-upload-button")
+    upload: document.querySelector("#mode-upload-button"),
+    camera: document.querySelector("#mode-camera-button")
   },
   panels: {
     draw: document.querySelector("#draw-panel"),
-    upload: document.querySelector("#upload-panel")
+    upload: document.querySelector("#upload-panel"),
+    camera: document.querySelector("#camera-panel")
   },
   title: document.querySelector("#mode-title"),
   hint: document.querySelector("#mode-hint"),
+  alternativesCard: document.querySelector("#alternatives-card"),
   resultView,
-  onModeChange: (mode) => {
+  onModeChange: async (mode) => {
+    cameraMode.leaveMode();
+
     if (mode === "draw") {
       strokeCanvas.resize();
+    }
+
+    if (mode === "camera") {
+      await cameraMode.enterMode();
     }
   }
 });
 
 drawMode.mount();
 uploadMode.mount();
+cameraMode.mount();
 modeSwitcher.mount();

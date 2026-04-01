@@ -59,7 +59,7 @@ export class UploadMode {
     this.activeRequestId = requestId;
 
     try {
-      const result = await this.recognitionApi.recognizeUploadedImage({
+      const result = await this.recognitionApi.recognizeImageInput({
         imageDataUrl: this.selectedImageDataUrl,
         mimeType: this.selectedFile.type
       });

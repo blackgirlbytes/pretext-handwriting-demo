@@ -13,12 +13,43 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <section id="api-key-gate" class="api-key-gate">
+      <div class="api-key-card workspace-panel panel">
+        <p class="panel-kicker">Session setup</p>
+        <h1>Bring your own OpenAI key</h1>
+        <p class="subtitle api-key-subtitle">
+          This deployment uses your OpenAI API key for image and camera handwriting recognition so it does not consume the app owner's credits.
+        </p>
+        <form id="api-key-form" class="api-key-form">
+          <label class="field">
+            <span>OpenAI API Key</span>
+            <input
+              id="api-key-input"
+              type="password"
+              name="apiKey"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="sk-..."
+            />
+          </label>
+          <button id="api-key-submit-button" type="submit">Start with this key</button>
+        </form>
+        <p id="api-key-message" class="hint api-key-hint">
+          Your key is sent to the server over the current connection and kept only for this browser session. It is not stored in localStorage.
+        </p>
+      </div>
+    </section>
+
     <main class="app-shell">
       <section class="panel panel-left workspace-panel input-workspace">
         <div class="panel-kicker">Handwriter scrapbook lab</div>
         <p class="subtitle">
           Capture handwriting from drawing, uploaded images, or camera, then turn the recognized text into movable scrapbook pieces.
         </p>
+        <div class="session-key-row">
+          <span id="api-key-status-badge" class="session-key-badge">Checking OpenAI key</span>
+          <button id="change-api-key-button" type="button" class="button-secondary">Change Key</button>
+        </div>
         <div class="mode-tabs" role="tablist" aria-label="Recognition modes">
           <button id="mode-draw-button" class="mode-tab" type="button" data-active="true">Draw</button>
           <button id="mode-upload-button" class="mode-tab button-secondary" type="button" data-active="false">Upload Image</button>

@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 import { recognizeHandwriting } from "./google-input-tools.js";
 import { recognizeHandwritingFromImage } from "./openai-image-ocr.js";
+import { getSession } from "./session-store.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,6 +19,41 @@ const port = Number(process.env.PORT) || 3000;
 app.use(express.json({ limit: "15mb" }));
 app.use("/vendor/pretext", express.static(pretextDir));
 app.use(express.static(publicDir));
+
+app.get("/api/session/openai-key", (req, res) => {
+  res.set("Cache-Control", "no-store");
+  const session = getSession(req, res);
+
+  return res.json({
+    hasKey: Boolean(session.openAiApiKey || process.env.OPENAI_API_KEY),
+    source: session.openAiApiKey ? "session" : (process.env.OPENAI_API_KEY ? "server" : "none")
+  });
+});
+
+app.post("/api/session/openai-key", (req, res) => {
+  res.set("Cache-Control", "no-store");
+  const { apiKey } = req.body ?? {};
+
+  if (typeof apiKey !== "string" || !apiKey.trim()) {
+    return res.status(400).json({ error: "An OpenAI API key is required." });
+  }
+
+  const session = getSession(req, res);
+  session.openAiApiKey = apiKey.trim();
+
+  return res.status(201).json({
+    hasKey: true,
+    source: "session"
+  });
+});
+
+app.delete("/api/session/openai-key", (req, res) => {
+  res.set("Cache-Control", "no-store");
+  const session = getSession(req, res);
+  session.openAiApiKey = "";
+
+  return res.status(204).end();
+});
 
 app.post("/api/recognize/draw", async (req, res) => {
   const { strokes, width, height, language = "en" } = req.body ?? {};
@@ -53,6 +89,7 @@ app.post("/api/recognize/draw", async (req, res) => {
 });
 
 app.post("/api/recognize/image", async (req, res) => {
+  res.set("Cache-Control", "no-store");
   const { imageDataUrl, mimeType = "image/png" } = req.body ?? {};
 
   if (typeof imageDataUrl !== "string" || !imageDataUrl.startsWith("data:image/")) {
@@ -64,11 +101,13 @@ app.post("/api/recognize/image", async (req, res) => {
   }
 
   try {
-    const result = await recognizeHandwritingFromImage({ imageDataUrl, mimeType });
+    const session = getSession(req, res);
+    const apiKey = session.openAiApiKey || process.env.OPENAI_API_KEY;
+    const result = await recognizeHandwritingFromImage({ imageDataUrl, mimeType, apiKey });
     return res.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Recognition failed.";
-    const statusCode = message === "OPENAI_API_KEY is not set." ? 500 : 502;
+    const statusCode = message === "OpenAI API key is not configured for this session." ? 401 : 502;
 
     return res.status(statusCode).json({ error: message });
   }

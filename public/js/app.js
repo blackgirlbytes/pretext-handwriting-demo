@@ -1,3 +1,4 @@
+import { ApiKeyGate } from "./lib/api-key-gate.js";
 import { StrokeCanvas } from "./lib/stroke-canvas.js";
 import { ResultView } from "./lib/result-view.js";
 import { ScrapbookBoard } from "./lib/scrapbook-board.js";
@@ -20,6 +21,17 @@ let latestRecognizedText = "Nothing recognized yet.";
 function hasScrapbookReadyText(text) {
   return Boolean(text && text.trim() && !invalidScrapbookTexts.has(text));
 }
+
+const apiKeyGate = new ApiKeyGate({
+  recognitionApi,
+  gate: document.querySelector("#api-key-gate"),
+  form: document.querySelector("#api-key-form"),
+  input: document.querySelector("#api-key-input"),
+  message: document.querySelector("#api-key-message"),
+  appShell: document.querySelector(".app-shell"),
+  statusBadge: document.querySelector("#api-key-status-badge"),
+  changeButton: document.querySelector("#change-api-key-button")
+});
 
 const resultView = new ResultView({
   resultText: document.querySelector("#result-text"),
@@ -96,6 +108,7 @@ uploadMode.mount();
 cameraMode.mount();
 modeSwitcher.mount();
 scrapbookBoard.mount();
+apiKeyGate.mount();
 
 addToScrapbookButton.disabled = true;
 
@@ -142,3 +155,5 @@ addToScrapbookButton.addEventListener("click", () => {
   resultView.setStatus("Added recognized text to the scrapbook.");
   setOutputTab("scrapbook");
 });
+
+apiKeyGate.init();

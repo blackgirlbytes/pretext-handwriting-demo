@@ -19,18 +19,18 @@ function extractOutputText(payload) {
   return "";
 }
 
-export async function recognizeHandwritingFromImage({ imageDataUrl, mimeType }) {
-  const apiKey = process.env.OPENAI_API_KEY;
+export async function recognizeHandwritingFromImage({ imageDataUrl, mimeType, apiKey }) {
+  const resolvedApiKey = apiKey || process.env.OPENAI_API_KEY;
 
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is not set.");
+  if (!resolvedApiKey) {
+    throw new Error("OpenAI API key is not configured for this session.");
   }
 
   const response = await fetch(OPENAI_RESPONSES_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`
+      Authorization: `Bearer ${resolvedApiKey}`
     },
     body: JSON.stringify({
       model: DEFAULT_MODEL,

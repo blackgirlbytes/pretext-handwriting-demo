@@ -35,6 +35,40 @@ input {
   font: inherit;
 }
 
+.api-key-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(8, 16, 21, 0.58);
+  backdrop-filter: blur(10px);
+}
+
+.api-key-card {
+  width: min(560px, 100%);
+  padding: 1.5rem;
+}
+
+.api-key-card h1 {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+.api-key-subtitle {
+  margin-bottom: 1rem;
+}
+
+.api-key-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.api-key-hint {
+  margin-top: 0.9rem;
+  max-width: 48ch;
+}
+
 .app-shell {
   width: min(1260px, 100%);
   margin: 0 auto;
@@ -79,6 +113,27 @@ input {
   color: var(--muted);
   line-height: 1.6;
   max-width: 44ch;
+}
+
+.session-key-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: -0.15rem 0 1rem;
+  flex-wrap: wrap;
+}
+
+.session-key-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 248, 239, 0.12);
+  border: 1px solid rgba(255, 248, 239, 0.14);
+  color: rgba(255, 248, 239, 0.92);
+  font-size: 0.86rem;
 }
 
 .mode-tabs {

@@ -117,6 +117,10 @@ function setOutputTab(activeTab) {
   for (const [name, panel] of Object.entries(outputPanels)) {
     panel.classList.toggle("is-active", name === activeTab);
   }
+
+  if (activeTab === "scrapbook") {
+    requestAnimationFrame(() => scrapbookBoard.refresh());
+  }
 }
 
 outputTabs.transcript.addEventListener("click", () => setOutputTab("transcript"));

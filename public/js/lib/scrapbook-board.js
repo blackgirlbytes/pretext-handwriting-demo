@@ -49,6 +49,10 @@ export class ScrapbookBoard {
     this.render();
   }
 
+  refresh() {
+    this.render();
+  }
+
   addArtifact(text) {
     const trimmedText = String(text || "").trim();
 

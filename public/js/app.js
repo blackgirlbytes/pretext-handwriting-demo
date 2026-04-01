@@ -10,7 +10,6 @@ import { RecognitionApi } from "./services/recognition-api.js";
 const strokeCanvas = new StrokeCanvas(document.querySelector("#draw-canvas"));
 const recognitionApi = new RecognitionApi();
 const addToScrapbookButton = document.querySelector("#add-to-scrapbook-button");
-const scrapbookSourceText = document.querySelector("#scrapbook-source-text");
 const invalidScrapbookTexts = new Set([
   "Nothing recognized yet.",
   "Recognition failed.",
@@ -28,7 +27,6 @@ const resultView = new ResultView({
   status: document.querySelector("#status"),
   onResultTextChange: (text) => {
     latestRecognizedText = text;
-    scrapbookSourceText.textContent = text;
     addToScrapbookButton.disabled = !hasScrapbookReadyText(text);
   }
 });

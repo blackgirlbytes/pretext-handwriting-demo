@@ -1,0 +1,36 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "b6c395a534f6",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "README.md",
+    "public/index.html",
+    "public/js/app.js",
+    "public/js/lib/read-file-as-data-url.js",
+    "public/js/lib/result-view.js",
+    "public/js/modes/draw-mode.js",
+    "public/js/modes/mode-switcher.js",
+    "public/js/modes/upload-mode.js",
+    "public/js/services/recognition-api.js",
+    "public/styles.css",
+    "server/index.js",
+    "server/openai-image-ocr.js"
+  ],
+  "sessions": [
+    {
+      "metadata": "/b6/c395a534f6/0/metadata.json",
+      "transcript": "/b6/c395a534f6/0/full.jsonl",
+      "content_hash": "/b6/c395a534f6/0/content_hash.txt",
+      "prompt": "/b6/c395a534f6/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 851130,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 821120,
+    "output_tokens": 13480,
+    "api_call_count": 19
+  }
+}

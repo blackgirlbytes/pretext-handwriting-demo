@@ -1,0 +1,1 @@
+the color scheme and style is a little hard for visibility..lets take some inspiration and copy the theme/color/layout from Documents/agent-experiments/handwriter. We do not need to add in pretext just yet

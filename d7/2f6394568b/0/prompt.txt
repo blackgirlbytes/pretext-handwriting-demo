@@ -1,0 +1,30 @@
+the color scheme and style is a little hard for visibility..lets take some inspiration and copy the theme/color/layout from Documents/agent-experiments/handwriter. We do not need to add in pretext just yet
+
+---
+
+so where are we at now? is pretext implemented at all
+
+---
+
+a few notes: remove this "dd recognized text to start building a scrapbook composition.", the background text should span the whole composition page, the scrapbook output vs composition playground could be in tabs that you can switch between rather than scrolling down from each other, the shapes no longer move
+
+---
+
+transcript tab and scrapbook tab are duplicates. I like the formatting of the output studio section in Documents/agent-experiments/handwriter where you have the transcript box ..it's not super spaced out ..it just shows the recognized text..in this pretext handwriting demo..we have the directions and then the text box is so much further down..and then it repeats again in the transcript output..showing that recognized text..we should only have the option to add the shape and then the composition rendering
+
+---
+
+oksy that's good..my problem is there's too much space between the words Scrapbook Output
+Switch between the raw recognized text and the scrapbook composition. and Draw somethign..and then there's too much space where the recognized text box appears..like too much margin between these elements
+
+---
+
+no i dont think you understand it looks like you tightened the space between in the sentence itself but there's too much space vertically between each of the elements like on the scrapbook side..these elements are close enough together does that make sense? before you make any changes..confirm with me your understanding
+
+---
+
+yes
+
+---
+
+I actually fixed it on my own where i want it to be ..can we commit this

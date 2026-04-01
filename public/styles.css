@@ -519,6 +519,10 @@ button:disabled {
   touch-action: none;
   box-shadow: 0 16px 28px rgba(24, 20, 12, 0.18);
   overflow: hidden;
+  will-change: left, top, width, height, opacity;
+  transition:
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
 .scrapbook-artifact.is-dragging {

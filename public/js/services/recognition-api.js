@@ -1,6 +1,14 @@
 export class RecognitionApi {
   async recognizeDrawInput(payload) {
-    const response = await fetch("/api/recognize/draw", {
+    return this.post("/api/recognize/draw", payload);
+  }
+
+  async recognizeUploadedImage(payload) {
+    return this.post("/api/recognize/image", payload);
+  }
+
+  async post(url, payload) {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

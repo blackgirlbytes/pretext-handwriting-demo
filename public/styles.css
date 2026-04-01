@@ -14,7 +14,8 @@ body {
 }
 
 button,
-select {
+select,
+input {
   font: inherit;
 }
 
@@ -39,6 +40,22 @@ select {
   align-items: end;
   justify-content: space-between;
   gap: 12px;
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mode-tab[data-active="true"] {
+  background: #111827;
+  color: #ffffff;
+}
+
+.mode-tab[data-active="false"] {
+  background: #e5e7eb;
+  color: #111827;
 }
 
 .field {
@@ -83,6 +100,7 @@ button {
   padding: 10px 16px;
   background: #111827;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .button-secondary {
@@ -90,9 +108,40 @@ button {
   color: #111827;
 }
 
+input[type="file"],
+select {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #ffffff;
+}
+
 .hint,
 .status {
   color: #4b5563;
+}
+
+.file-name {
+  margin: 12px 0;
+  color: #374151;
+}
+
+.upload-preview-wrap {
+  margin: 16px 0;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #fffef8;
+  overflow: hidden;
+}
+
+#upload-preview-image {
+  display: block;
+  max-width: 100%;
+  max-height: 420px;
 }
 
 .panel-right {

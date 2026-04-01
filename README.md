@@ -1,12 +1,12 @@
 # Handwriter
 
-Handwriter is a handwriting-to-scrapbook experiment built around three input paths:
+Handwriter is a handwriting-to-scrapbook playground built around three input paths:
 
 - `Draw`: write directly in the browser on a canvas
 - `Upload Image`: recognize handwriting from an uploaded image
 - `Camera`: capture a photo and recognize handwriting from that frame
 
-The project is intentionally not just a generic OCR demo. The longer-term goal is a scrapbook-style composition surface where recognized text becomes movable visual artifacts, and Pretext is used where programmable layout is visibly necessary.
+It is not just a generic OCR demo. In its current state, the app already turns recognized handwriting into draggable scrapbook artifacts and uses Pretext to lay out a live background field of text that reroutes around those moving shapes. The result is a composition surface where sticky notes, circles, and hearts can interrupt and reshape the page in real time.
 
 ## Recognition Architecture
 
@@ -20,19 +20,13 @@ This means Draw mode does not rely on the browser handwriting API, and image-bas
 
 ## Local Setup
 
-### 1. Install dependencies
-
-```bash
-npm install
-```
-
-### 2. Create a local `.env`
+### 1. Create a local `.env`
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env` and set your own values:
+Then add these variables:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
@@ -43,8 +37,12 @@ Notes:
 
 - `OPENAI_API_KEY` is required for `Upload Image` and `Camera`
 - `OPENAI_OCR_MODEL` is optional and defaults to `gpt-4.1-mini`
-- Do not commit `.env`
-- Do not put a real API key in this README or any tracked file
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
 
 ### 3. Start the app
 
@@ -52,7 +50,7 @@ Notes:
 npm run dev
 ```
 
-Then open:
+By default the app runs at:
 
 ```text
 http://localhost:3000
@@ -121,4 +119,4 @@ Supported local settings:
 
 ## Security Note
 
-Use your own local `.env` for API keys during development. Keep `.env` out of git and out of screenshots, docs, and shared code snippets.
+Use your own local `.env` for API keys during development. Keep `.env` out of git.

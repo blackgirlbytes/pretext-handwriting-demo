@@ -1,37 +1,3 @@
-Build the first real version of handwriter.
-
-Goal:
-Create a small app that turns handwritten drawing input into text.
-
-Requirements:
-- Support a Draw mode where I can handwrite in the browser on a canvas.
-- Draw mode must follow the same recognition architecture as my original handwriter project:
-  collect stroke data from the canvas and send it to Google Input Tools over HTTP.
-- Do not use navigator.createHandwritingRecognizer() or the browser’s built-in handwriting recognition API.
-- Do not use OpenAI for Draw mode.
-- Show the recognized text clearly in the UI.
-- Keep the app simple, practical, and easy to extend later.
-- Use a lightweight local setup if needed.
-
-Implementation preferences:
-- Keep the code organized so later modes like Upload Image and Camera can be added without rewriting everything.
-- Favor a small, understandable file structure.
-- Keep the UI functional rather than polished.
-
-Important:
-- This milestone is only for Draw mode.
-- Do not implement Upload Image or Camera yet.
-- Commit and push this as its own milestone when complete.
-
-After implementing:
-- summarize the architecture
-- explicitly confirm that Draw mode uses the Google Input Tools HTTP request flow
-- explicitly confirm that it does not use navigator.createHandwritingRecognizer()
-- tell me how to test it locally
-- tell me the biggest current limitation
-
----
-
 Now expand handwriter so it can recognize handwriting from uploaded images.
 
 Requirements:

@@ -1,9 +1,1 @@
-Create an AGENTS.md file with the following rules :
-
----
-
-Important working rules for this project:
-- Keep changes/milestones separated into distinct commits.
-- After each change/milestone, commit and push before starting the next one.
-- Do not bundle unrelated work from different prompts into the same commit.
-- If a prompt would require a major architectural deviation, stop and explain before proceeding.
+okay lets commit and push this file

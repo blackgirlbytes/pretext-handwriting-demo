@@ -1,0 +1,32 @@
+Now expand handwriter so it can recognize handwriting from uploaded images.
+
+Requirements:
+- Keep Draw mode working exactly as-is.
+- Do not change the Draw-mode recognition architecture:
+  Draw must continue to use Google Input Tools over HTTP.
+- Add an Upload Image mode.
+- Upload Image should send the image to a local server endpoint.
+- The server should use the OpenAI Responses API with image input to recognize handwriting from uploaded images.
+- Show the recognized text in the UI.
+- Make the mode switch between Draw and Upload Image clear and easy to understand.
+
+Implementation preferences:
+- Keep the architecture explicit and easy to follow:
+  - Draw -> Google Input Tools stroke recognition
+  - Upload Image -> OpenAI Responses API image recognition
+- Keep the UX simple and practical.
+
+Important:
+- This milestone is only Draw + Upload Image.
+- Do not add Camera yet.
+- Commit and push this as its own milestone.
+
+After implementing:
+- summarize the client/server architecture
+- explicitly confirm the OCR split between Draw and Upload Image
+- tell me what I should manually test
+- tell me any rough edges still present
+
+---
+
+i dont want to have to click recognize. i feel like after i draw it should start trying to recognize it

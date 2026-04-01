@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.5.2",
+  "checkpoint_id": "e56636b7c4d4",
+  "session_id": "019d482a-f38a-7fb1-9ab1-effdfee18112",
+  "strategy": "manual-commit",
+  "created_at": "2026-04-01T09:12:39.886934Z",
+  "branch": "main",
+  "checkpoints_count": 0,
+  "files_touched": [
+    "public/styles.css",
+    "server/index.js",
+    "server/openai-image-ocr.js",
+    "server/session-store.js",
+    "public/index.html",
+    "public/js/app.js",
+    "public/js/lib/api-key-gate.js",
+    "public/js/services/recognition-api.js"
+  ],
+  "agent": "Codex",
+  "model": "gpt-5.4-mini",
+  "turn_id": "33c93b803de5",
+  "initial_attribution": {
+    "calculated_at": "2026-04-01T09:12:39.886507Z",
+    "agent_lines": 0,
+    "human_added": 369,
+    "human_modified": 8,
+    "human_removed": 0,
+    "total_committed": 369,
+    "agent_percentage": 0
+  }
+}

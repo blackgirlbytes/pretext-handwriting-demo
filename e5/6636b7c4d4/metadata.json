@@ -5,9 +5,14 @@
   "branch": "main",
   "checkpoints_count": 1,
   "files_touched": [
+    "public/index.html",
+    "public/js/app.js",
+    "public/js/lib/api-key-gate.js",
     "public/js/services/recognition-api.js",
+    "public/styles.css",
     "server/index.js",
-    "server/openai-image-ocr.js"
+    "server/openai-image-ocr.js",
+    "server/session-store.js"
   ],
   "sessions": [
     {
@@ -15,6 +20,12 @@
       "transcript": "/e5/6636b7c4d4/0/full.jsonl",
       "content_hash": "/e5/6636b7c4d4/0/content_hash.txt",
       "prompt": "/e5/6636b7c4d4/0/prompt.txt"
+    },
+    {
+      "metadata": "/e5/6636b7c4d4/1/metadata.json",
+      "transcript": "/e5/6636b7c4d4/1/full.jsonl",
+      "content_hash": "/e5/6636b7c4d4/1/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {

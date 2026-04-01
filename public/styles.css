@@ -109,6 +109,11 @@ button {
   color: #111827;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 input[type="file"],
 select {
   width: 100%;
@@ -126,18 +131,6 @@ select {
 .file-name {
   margin: 12px 0;
   color: #374151;
-}
-
-.upload-preview-wrap {
-.camera-stage {
-  margin: 16px 0;
-  min-height: 220px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  background: #fffef8;
-  overflow: hidden;
 }
 
 #upload-preview-image,
@@ -179,9 +172,133 @@ select {
   white-space: pre-wrap;
 }
 
+.scrapbook-controls {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.scrapbook-card {
+  gap: 16px;
+}
+
+.scrapbook-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.scrapbook-header h2 {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+}
+
+.scrapbook-subtle {
+  margin: 0;
+  color: #6b7280;
+}
+
+.scrapbook-surface {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px dashed #d1d5db;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 244, 200, 0.7), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(215, 235, 255, 0.8), transparent 30%),
+    linear-gradient(180deg, #fffef8 0%, #f9f6ed 100%);
+}
+
+.scrapbook-empty-state {
+  position: absolute;
+  inset: 24px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #6b7280;
+  border: 1px dashed #d1d5db;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.scrapbook-artifact {
+  position: absolute;
+  max-width: 220px;
+  min-width: 140px;
+  padding: 18px 16px;
+  user-select: none;
+  touch-action: none;
+  cursor: grab;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.14);
+}
+
+.scrapbook-artifact:active {
+  cursor: grabbing;
+}
+
+.scrapbook-artifact-label {
+  margin: 0 0 10px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(17, 24, 39, 0.65);
+}
+
+.scrapbook-artifact-text {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 1rem;
+}
+
+.artifact-sticky {
+  background: #fff0a8;
+  border: 1px solid #e1cb61;
+  border-radius: 6px;
+  transform: rotate(-2deg);
+}
+
+.artifact-circle {
+  min-height: 170px;
+  min-width: 170px;
+  border-radius: 999px;
+  background: #dceeff;
+  border: 1px solid #8eb7d8;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.artifact-heart {
+  min-height: 170px;
+  min-width: 180px;
+  background: #ffd9e0;
+  border: 1px solid #e0a0af;
+  clip-path: path("M 90 165 C 35 130 0 95 0 50 C 0 18 24 0 50 0 C 70 0 84 12 90 24 C 96 12 110 0 130 0 C 156 0 180 18 180 50 C 180 95 145 130 90 165 Z");
+  padding: 40px 28px 26px;
+  text-align: center;
+}
+
 .candidate-list {
   margin: 0;
   padding-left: 20px;
+}
+
+.upload-preview-wrap,
+.camera-stage {
+  margin: 16px 0;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  background: #fffef8;
+  overflow: hidden;
 }
 
 @media (max-width: 900px) {
@@ -191,6 +308,11 @@ select {
 
   .panel-header,
   .actions {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .scrapbook-header {
     align-items: start;
     flex-direction: column;
   }

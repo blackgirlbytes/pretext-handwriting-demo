@@ -1,8 +1,9 @@
 export class ResultView {
-  constructor({ resultText, candidateList, status }) {
+  constructor({ resultText, candidateList, status, onResultTextChange = null }) {
     this.resultText = resultText;
     this.candidateList = candidateList;
     this.status = status;
+    this.onResultTextChange = onResultTextChange;
   }
 
   setStatus(message) {
@@ -11,6 +12,7 @@ export class ResultView {
 
   setResultText(text) {
     this.resultText.textContent = text;
+    this.onResultTextChange?.(text);
   }
 
   setCandidates(candidates = []) {

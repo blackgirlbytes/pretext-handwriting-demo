@@ -1,5 +1,6 @@
 import { StrokeCanvas } from "./lib/stroke-canvas.js";
 import { ResultView } from "./lib/result-view.js";
+import { ScrapbookBoard } from "./lib/scrapbook-board.js";
 import { CameraMode } from "./modes/camera-mode.js";
 import { DrawMode } from "./modes/draw-mode.js";
 import { ModeSwitcher } from "./modes/mode-switcher.js";
@@ -8,10 +9,31 @@ import { RecognitionApi } from "./services/recognition-api.js";
 
 const strokeCanvas = new StrokeCanvas(document.querySelector("#draw-canvas"));
 const recognitionApi = new RecognitionApi();
+const addToScrapbookButton = document.querySelector("#add-to-scrapbook-button");
+const invalidScrapbookTexts = new Set([
+  "Nothing recognized yet.",
+  "Recognition failed.",
+  "No text recognized."
+]);
+let latestRecognizedText = "Nothing recognized yet.";
+
+function hasScrapbookReadyText(text) {
+  return Boolean(text && text.trim() && !invalidScrapbookTexts.has(text));
+}
+
 const resultView = new ResultView({
   resultText: document.querySelector("#result-text"),
   candidateList: document.querySelector("#candidate-list"),
-  status: document.querySelector("#status")
+  status: document.querySelector("#status"),
+  onResultTextChange: (text) => {
+    latestRecognizedText = text;
+    addToScrapbookButton.disabled = !hasScrapbookReadyText(text);
+  }
+});
+const scrapbookBoard = new ScrapbookBoard({
+  surface: document.querySelector("#scrapbook-surface"),
+  emptyState: document.querySelector("#scrapbook-empty-state"),
+  styleSelect: document.querySelector("#artifact-style-select")
 });
 
 const drawMode = new DrawMode({
@@ -72,3 +94,22 @@ drawMode.mount();
 uploadMode.mount();
 cameraMode.mount();
 modeSwitcher.mount();
+scrapbookBoard.mount();
+
+addToScrapbookButton.disabled = true;
+
+addToScrapbookButton.addEventListener("click", () => {
+  if (!hasScrapbookReadyText(latestRecognizedText)) {
+    resultView.setStatus("Recognize some handwriting before adding it to the scrapbook.");
+    return;
+  }
+
+  const hasArtifact = scrapbookBoard.addArtifact(latestRecognizedText);
+
+  if (!hasArtifact) {
+    resultView.setStatus("Recognize some handwriting before adding it to the scrapbook.");
+    return;
+  }
+
+  resultView.setStatus("Added recognized text to the scrapbook.");
+});

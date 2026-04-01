@@ -16,7 +16,7 @@ export class ModeSwitcher {
       upload: {
         title: "Upload Image",
         hint: "Upload a handwriting image. Recognition runs through the local server with the OpenAI Responses API.",
-        resultStatus: "Choose an image, then click Recognize."
+        resultStatus: "Choose an image. Recognition starts immediately."
       }
     };
   }

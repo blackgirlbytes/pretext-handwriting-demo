@@ -24,7 +24,6 @@ const drawMode = new DrawMode({
 const uploadMode = new UploadMode({
   recognitionApi,
   fileInput: document.querySelector("#image-file"),
-  uploadButton: document.querySelector("#upload-recognize-button"),
   clearButton: document.querySelector("#upload-clear-button"),
   previewImage: document.querySelector("#upload-preview-image"),
   fileName: document.querySelector("#image-file-name"),

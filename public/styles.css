@@ -521,6 +521,16 @@ button:disabled {
   overflow: hidden;
 }
 
+.scrapbook-artifact.is-dragging {
+  cursor: grabbing;
+  box-shadow: 0 20px 34px rgba(24, 20, 12, 0.24);
+}
+
+.scrapbook-artifact.is-resizing {
+  cursor: nwse-resize;
+  box-shadow: 0 20px 34px rgba(24, 20, 12, 0.24);
+}
+
 .scrapbook-artifact::before {
   content: "";
   position: absolute;
@@ -552,6 +562,45 @@ button:disabled {
   line-height: 1.35;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.scrapbook-artifact-resize-handle {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid rgba(64, 55, 41, 0.38);
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.5) 45%, rgba(64, 55, 41, 0.26) 100%);
+  box-shadow: 0 6px 14px rgba(24, 20, 12, 0.28);
+  cursor: nwse-resize;
+  z-index: 2;
+}
+
+.scrapbook-artifact-resize-handle::before,
+.scrapbook-artifact-resize-handle::after {
+  content: "";
+  position: absolute;
+  background: rgba(64, 55, 41, 0.55);
+  border-radius: 999px;
+}
+
+.scrapbook-artifact-resize-handle::before {
+  width: 10px;
+  height: 2px;
+  left: 5px;
+  top: 10px;
+  transform: rotate(45deg);
+}
+
+.scrapbook-artifact-resize-handle::after {
+  width: 10px;
+  height: 2px;
+  left: 8px;
+  top: 7px;
+  transform: rotate(45deg);
 }
 
 .artifact-sticky {
@@ -588,6 +637,13 @@ button:disabled {
   );
   transform: rotate(-5deg);
   text-align: center;
+}
+
+.artifact-heart .scrapbook-artifact-resize-handle {
+  left: 50%;
+  right: auto;
+  bottom: 12px;
+  transform: translateX(-50%);
 }
 
 @media (max-width: 960px) {

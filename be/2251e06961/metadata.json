@@ -5,7 +5,8 @@
   "branch": "main",
   "checkpoints_count": 1,
   "files_touched": [
-    "public/js/lib/pretext-scrapbook-layout.js"
+    "public/js/lib/pretext-scrapbook-layout.js",
+    "public/styles.css"
   ],
   "sessions": [
     {
@@ -13,6 +14,12 @@
       "transcript": "/be/2251e06961/0/full.jsonl",
       "content_hash": "/be/2251e06961/0/content_hash.txt",
       "prompt": "/be/2251e06961/0/prompt.txt"
+    },
+    {
+      "metadata": "/be/2251e06961/1/metadata.json",
+      "transcript": "/be/2251e06961/1/full.jsonl",
+      "content_hash": "/be/2251e06961/1/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {

@@ -6,7 +6,7 @@ Handwriter is a handwriting-to-scrapbook playground built around three input pat
 - `Upload Image`: recognize handwriting from an uploaded image
 - `Camera`: capture a photo and recognize handwriting from that frame
 
-It is not just a generic OCR demo. In its current state, the app already turns recognized handwriting into draggable scrapbook artifacts and uses Pretext to lay out a live background field of text that reroutes around those moving shapes. The result is a composition surface where sticky notes, circles, and hearts can interrupt and reshape the page in real time.
+This project is an experiment and demo of OCR plus [Pretext](https://github.com/chenglou/pretext). The app turns recognized handwriting into draggable scrapbook artifacts and uses Pretext to lay out a live background field of text that reroutes around those moving shapes. Sticky notes, circles, and hearts can interrupt and reshape the page in real time.
 
 ## Recognition Architecture
 

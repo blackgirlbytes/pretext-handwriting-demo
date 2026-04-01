@@ -27,6 +27,7 @@ const apiKeyGate = new ApiKeyGate({
   gate: document.querySelector("#api-key-gate"),
   form: document.querySelector("#api-key-form"),
   input: document.querySelector("#api-key-input"),
+  submitButton: document.querySelector("#api-key-submit-button"),
   message: document.querySelector("#api-key-message"),
   appShell: document.querySelector(".app-shell"),
   statusBadge: document.querySelector("#api-key-status-badge"),

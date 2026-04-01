@@ -4,6 +4,7 @@ export class ApiKeyGate {
     gate,
     form,
     input,
+    submitButton,
     message,
     appShell,
     statusBadge,
@@ -13,18 +14,21 @@ export class ApiKeyGate {
     this.gate = gate;
     this.form = form;
     this.input = input;
+    this.submitButton = submitButton;
     this.message = message;
     this.appShell = appShell;
     this.statusBadge = statusBadge;
     this.changeButton = changeButton;
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmitButtonClick = this.onSubmitButtonClick.bind(this);
     this.onChangeKey = this.onChangeKey.bind(this);
     this.onKeyRequired = this.onKeyRequired.bind(this);
   }
 
   mount() {
     this.form.addEventListener("submit", this.onSubmit);
+    this.submitButton.addEventListener("click", this.onSubmitButtonClick);
     this.changeButton.addEventListener("click", this.onChangeKey);
     window.addEventListener("handwriter:openai-key-required", this.onKeyRequired);
   }
@@ -47,13 +51,30 @@ export class ApiKeyGate {
     this.statusBadge.textContent = text;
   }
 
-  lockApp(message) {
+  setSubmitState({ disabled, label }) {
+    this.submitButton.disabled = disabled;
+    this.input.disabled = disabled;
+
+    if (label) {
+      this.submitButton.textContent = label;
+    }
+  }
+
+  lockApp(message, { preserveInput = true } = {}) {
     this.gate.hidden = false;
     this.appShell.inert = true;
     this.appShell.setAttribute("aria-hidden", "true");
     this.message.textContent = message;
     this.setBadgeText("OpenAI key required");
-    this.input.value = "";
+    this.setSubmitState({
+      disabled: false,
+      label: "Start with this key"
+    });
+
+    if (!preserveInput) {
+      this.input.value = "";
+    }
+
     window.requestAnimationFrame(() => this.input.focus());
   }
 
@@ -66,6 +87,10 @@ export class ApiKeyGate {
     this.setBadgeText(
       source === "server" ? "Server OpenAI key active" : "Session OpenAI key active"
     );
+    this.setSubmitState({
+      disabled: false,
+      label: "Start with this key"
+    });
   }
 
   async onSubmit(event) {
@@ -79,17 +104,31 @@ export class ApiKeyGate {
     }
 
     this.message.textContent = "Saving key for this session...";
+    this.setSubmitState({
+      disabled: true,
+      label: "Saving..."
+    });
 
     try {
       const status = await this.recognitionApi.saveOpenAiApiKey(apiKey);
       this.unlockApp(status.source);
     } catch (error) {
+      this.setSubmitState({
+        disabled: false,
+        label: "Start with this key"
+      });
       this.message.textContent = error instanceof Error ? error.message : "Failed to save API key.";
     }
   }
 
+  onSubmitButtonClick() {
+    this.form.requestSubmit();
+  }
+
   onChangeKey() {
-    this.lockApp("Enter a different OpenAI API key for this browser session.");
+    this.lockApp("Enter a different OpenAI API key for this browser session.", {
+      preserveInput: false
+    });
   }
 
   onKeyRequired(event) {

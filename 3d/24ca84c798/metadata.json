@@ -12,14 +12,14 @@
       "metadata": "/3d/24ca84c798/0/metadata.json",
       "transcript": "/3d/24ca84c798/0/full.jsonl",
       "content_hash": "/3d/24ca84c798/0/content_hash.txt",
-      "prompt": "/3d/24ca84c798/0/prompt.txt"
+      "prompt": ""
     }
   ],
   "token_usage": {
-    "input_tokens": 1966193,
+    "input_tokens": 1644469,
     "cache_creation_tokens": 0,
-    "cache_read_tokens": 1701120,
-    "output_tokens": 11432,
-    "api_call_count": 16
+    "cache_read_tokens": 1357568,
+    "output_tokens": 8590,
+    "api_call_count": 11
   }
 }

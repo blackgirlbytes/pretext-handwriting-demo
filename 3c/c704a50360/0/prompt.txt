@@ -1,7 +1,3 @@
-same with the image upload..when we upload it..it should just start the recognition process
-
----
-
 Add Camera mode and clean up the input UX.
 
 Requirements:

@@ -1,0 +1,77 @@
+Add Camera mode and clean up the input UX.
+
+Requirements:
+- Keep Draw mode working with Google Input Tools over HTTP.
+- Keep Upload Image working through the OpenAI Responses API.
+- Add a Camera mode that captures a frame and sends it through the same server-side OpenAI image-recognition flow as Upload Image.
+- The app should now clearly support three modes:
+  - Draw
+  - Upload Image
+  - Camera
+- Each mode should show only the controls relevant to that mode.
+- Prefer the rear camera when possible so handwriting is less likely to be mirrored like a selfie preview.
+- Reuse the same image recognition endpoint for Upload Image and Camera.
+
+Implementation preferences:
+- Keep the UI easy to scan.
+- Avoid mixing camera controls into other modes.
+- Keep the OCR architecture explicit and unchanged.
+
+Important:
+- This milestone is about Camera mode and input UX cleanup.
+- Commit and push this as its own milestone.
+
+After implementing:
+- summarize the UX changes
+- explicitly confirm the final OCR architecture
+- tell me any browser/device limitations I should know about
+- tell me what I should test manually
+
+---
+
+can we add the following to our AGENTS.md file
+
+---
+
+## Project Intent
+
+This project is intentionally a Pretext-driven experiment, not just a generic handwriting app.
+
+The goal is to build a handwriting-to-scrapbook experience where:
+- handwritten input can be captured from drawing, uploaded images, and camera photos
+- recognized text can become visual scrapbook artifacts
+- Pretext is used for programmable text layout where it is visibly necessary
+
+Pretext should not be used for ordinary box text wrapping that CSS could handle just as well.
+Its role in this project is to power behavior like:
+- background text reflowing around movable obstacles
+- line-by-line layout that adapts to changing geometry
+- layout behavior that is visibly more expressive than normal DOM flow
+
+---
+
+Now evolve handwriter from a plain OCR app into a scrapbook-style composition playground.
+
+Requirements:
+- Keep all three input modes working.
+- Keep the OCR architecture unchanged:
+  - Draw -> Google Input Tools over HTTP
+  - Upload Image / Camera -> OpenAI Responses API
+- Add a scrapbook surface or view where recognized text can become movable visual artifacts.
+- Support at least 3 scrapbook artifact styles in the first pass:
+  - sticky note
+  - circle
+  - heart
+- Shapes should be draggable.
+- Preserve access to the recognized text alongside the scrapbook composition if that still makes sense.
+
+Important:
+- Do not introduce Pretext yet unless it is absolutely required.
+- First make the scrapbook concept itself work.
+- Commit and push this as its own milestone.
+
+After implementing:
+- summarize the scrapbook architecture
+- tell me what feels rough or incomplete
+- tell me whether Pretext feels necessary yet or not
+- tell me what I should evaluate visually in the browser

@@ -1,0 +1,9 @@
+the color scheme and style is a little hard for visibility..lets take some inspiration and copy the theme/color/layout from Documents/agent-experiments/handwriter. We do not need to add in pretext just yet
+
+---
+
+so where are we at now? is pretext implemented at all
+
+---
+
+a few notes: remove this "dd recognized text to start building a scrapbook composition.", the background text should span the whole composition page, the scrapbook output vs composition playground could be in tabs that you can switch between rather than scrolling down from each other, the shapes no longer move

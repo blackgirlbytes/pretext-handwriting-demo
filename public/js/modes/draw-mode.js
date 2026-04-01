@@ -1,9 +1,8 @@
 export class DrawMode {
-  constructor({ strokeCanvas, recognitionApi, languageSelect, recognizeButton, clearButton, resultView }) {
+  constructor({ strokeCanvas, recognitionApi, languageSelect, clearButton, resultView }) {
     this.strokeCanvas = strokeCanvas;
     this.recognitionApi = recognitionApi;
     this.languageSelect = languageSelect;
-    this.recognizeButton = recognizeButton;
     this.clearButton = clearButton;
     this.resultView = resultView;
     this.autoRecognizeDelayMs = 700;
@@ -18,7 +17,6 @@ export class DrawMode {
   }
 
   mount() {
-    this.recognizeButton.addEventListener("click", this.onRecognize);
     this.clearButton.addEventListener("click", this.onClear);
     this.strokeCanvas.on("input", this.scheduleAutoRecognize);
     this.strokeCanvas.on("strokeEnd", this.scheduleAutoRecognize);
@@ -72,8 +70,7 @@ export class DrawMode {
       return;
     }
 
-    this.recognizeButton.disabled = true;
-    this.resultView.setStatus(source === "auto" ? "Recognizing handwriting..." : "Recognizing handwriting...");
+    this.resultView.setStatus("Recognizing handwriting...");
 
     const requestId = this.activeRequestId + 1;
     this.activeRequestId = requestId;
@@ -98,8 +95,8 @@ export class DrawMode {
       this.resultView.setCandidates([]);
       this.resultView.setStatus(error instanceof Error ? error.message : "Recognition failed.");
     } finally {
-      if (requestId === this.activeRequestId) {
-        this.recognizeButton.disabled = false;
+      if (requestId !== this.activeRequestId) {
+        return;
       }
     }
   }

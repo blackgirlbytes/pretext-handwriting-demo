@@ -17,7 +17,6 @@ const drawMode = new DrawMode({
   strokeCanvas,
   recognitionApi,
   languageSelect: document.querySelector("#language-select"),
-  recognizeButton: document.querySelector("#recognize-button"),
   clearButton: document.querySelector("#clear-button"),
   resultView
 });

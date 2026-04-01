@@ -6,7 +6,8 @@ Small local app for Draw mode and Upload Image handwriting recognition.
 
 ```bash
 npm install
-export OPENAI_API_KEY=your_api_key_here
+cp .env.example .env
+# edit .env and set OPENAI_API_KEY
 npm run dev
 ```
 

@@ -435,12 +435,19 @@ button:disabled {
 }
 
 .scrapbook-inline-field {
-  min-width: 170px;
+  min-width: 190px;
 }
 
 .scrapbook-inline-field select {
-  padding: 0.62rem 0.9rem;
+  appearance: none;
+  min-height: 3.15rem;
+  padding: 0.72rem 3rem 0.72rem 1.05rem;
   border-radius: 999px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.25L7 7.25L13 1.25' fill='none' stroke='%23f7f2e8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.05rem center;
+  background-size: 0.82rem auto;
+  line-height: 1.2;
 }
 
 #add-to-scrapbook-button {

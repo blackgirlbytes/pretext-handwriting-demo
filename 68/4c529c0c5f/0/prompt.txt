@@ -1,0 +1,5 @@
+yeah remove it from the draw section. okay where do i store the openapi key
+
+---
+
+same with the image upload..when we upload it..it should just start the recognition process
